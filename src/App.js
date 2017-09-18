@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import SearchBar from './searchBar';
+
 class App extends Component {
   render() {
     return (
@@ -10,9 +12,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>WhoTube</h2>
         </div>
-        <p className="App-intro">
-          Something will go here...
-        </p>
+        <SearchBar />
       </div>
     );
   }
