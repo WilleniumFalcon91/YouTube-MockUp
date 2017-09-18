@@ -31,10 +31,15 @@ class App extends Component {
           <h2>WhoTube</h2>
         </div>
         <SearchBar />
-        <VideoDetail video={this.state.selectedVideo}/>
-        <VideoList 
-          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-          videos={this.state.videos} />
+        <div className="feature-video">
+          <VideoDetail video={this.state.selectedVideo}/>
+        </div>
+        <div className="video-list">
+          <VideoList 
+            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+            videos={this.state.videos} 
+            />
+        </div>
       </div>
     );
   }
