@@ -4,15 +4,18 @@ import './App.css';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './searchBar';
 import VideoList from './videoList';
+import VideoDetail from './videoDetail';
 
 const API_KEY = 'AIzaSyCo_LE6xezdYhgVj9tu5nlPxVpElcU4dgI';
 
 class App extends Component {
   constructor(props) {
     super(props);
-      this.state = { videos: [] };
+      this.state = {
+        videos: [], 
+      };
 
-      YTSearch({ key: API_KEY, searchTerm: 'surfboards'}, (videos) => {
+      YTSearch({ key: API_KEY, term: 'surfboards'}, (videos) => {
         this.setState({videos});
       });
   }
@@ -24,6 +27,7 @@ class App extends Component {
           <h2>WhoTube</h2>
         </div>
         <SearchBar />
+        <VideoDetail video={this.state.videos[0]}/>
         <VideoList videos={this.state.videos} />
       </div>
     );
