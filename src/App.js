@@ -11,12 +11,15 @@ const API_KEY = 'AIzaSyCo_LE6xezdYhgVj9tu5nlPxVpElcU4dgI';
 class App extends Component {
   constructor(props) {
     super(props);
-      this.state = {
-        videos: [],
-        selectedVideo: null, 
-      };
+    this.state = {
+      videos: [],
+      selectedVideo: null, 
+    };
+    this.videoSearch('surfboards');
+  }
 
-      YTSearch({ key: API_KEY, term: 'surfboards'}, (videos) => {
+  videoSearch(term) {
+      YTSearch({ key: API_KEY, term: term}, (videos) => {
         this.setState({
           videos: videos,
           selectedVideo: videos[0],
@@ -30,7 +33,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>WhoTube</h2>
         </div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
         <div className="feature-video">
           <VideoDetail video={this.state.selectedVideo}/>
         </div>
